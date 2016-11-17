@@ -1,14 +1,19 @@
 package ble.com.kamilsklep;
+
+/**
+ * Created by menf on 2016-11-04.
+ */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import java.util.List;
-/**
- * Created by student on 04.11.2016.
- */
-public class Adapter extends ArrayAdapter {
+
+
+public class Adapter extends ArrayAdapter<Produkt>{
+
     List<Produkt> mylist;
 
     public Adapter(Context _context, List<Produkt> _mylist) {
@@ -26,20 +31,19 @@ public class Adapter extends ArrayAdapter {
 
 
         // Product object
-        Produkt produkt = (Produkt) getItem(position);
-
-
+        Produkt product = getItem(position);
         //
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
-        txtTitle.setText(produkt.title);
+        txtTitle.setText(product.title);
 
         // show image
         ImageView img = (ImageView)convertView.findViewById(R.id.image);
 
         // download image
-        ImageDownloader imageDownloader = new ImageDownloader();
-        imageDownloader.download(produkt.img_url, img);
+        img.setImageResource(product.img_url);
 
         return convertView;
     }
+
+
 }

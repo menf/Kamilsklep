@@ -1,68 +1,62 @@
 package ble.com.kamilsklep;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import android.app.Activity;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.ListView;
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends Activity {
     List products;
     ListView lvProducts;
+    TextView pole;
+    ImageView podglad;
+
+    /**
+     * Called when the activity is first created.
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         // populate data
         products = new ArrayList();
-        products.add(new Produkt("Orange","http://farm5.staticflickr.com/4142/4787427683_3672f1db9a_s.jpg"));
-        products.add(new Produkt("Apple","http://www.eszkola-wielkopolska.pl/eszkola/projekty/gimnazjum-kobylagora/jablka/images/jablko.jpg"));
-        products.add(new Produkt("Pineapple", "http://farm2.staticflickr.com/1008/1420343003_13eeb0f9f3_s.jpg"));
+        products.add(new Produkt(R.string.brazowa, R.drawable.brazowa, R.string.brazowa_opis));
+        products.add(new Produkt(R.string.czerwona,R.drawable.czerwona, R.string.czerwona_opis));
+        products.add(new Produkt(R.string.niebieska,R.drawable.niebieska, R.string.niebieska_opis));
+        products.add(new Produkt(R.string.zielona,R.drawable.zielona, R.string.zielona_opis));
+        products.add(new Produkt(R.string.zolta,R.drawable.zolta, R.string.zolta_opis));
+
+
+
 
         //
+        podglad = (ImageView) findViewById(R.id.imageView);
         lvProducts = (ListView) findViewById( R.id.list_products);
-        lvProducts.setAdapter(new Adapter(this, products));
-
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        pole = (TextView) findViewById(R.id.textView4);
+        lvProducts.setAdapter(new Adapter(this, products) );
+        lvProducts.setClickable(true);
+        lvProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Produkt product =(Produkt) lvProducts.getItemAtPosition(position);
+                // Toast.makeText(getApplicationContext(),product.getDesc(),Toast.LENGTH_LONG).show();
+                pole.setText(product.getDesc());
+                podglad.setImageResource(product.img_url);
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
-    }
+
+
 }

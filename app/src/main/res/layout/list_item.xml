@@ -11,9 +11,10 @@
         android:layout_margin="5dp"
         android:contentDescription="icon"
         />
+
     <TextView
         android:id="@+id/title"
-        style="@style/textlista"
+        style="@style/item_tekst"
         />
 
 </LinearLayout>

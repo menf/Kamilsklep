@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">Kamilsklep</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">kamilsklep</string>
+    <string name="powitanie">Welcome!!</string>
+    <string name="lista_produktow">Our assortment:</string>
+    <string name="opis_produktu">Description:</string>
+
+    <string name="brazowa">Schoko Shrimp</string>
+    <string name="brazowa_opis">Schoko Shrimp price: 200zł</string>
+
+    <string name="czerwona">Red Cherry Shrimp</string>
+    <string name="czerwona_opis">Red Cherry price: 300zł</string>
+
+    <string name="niebieska">Blue Velvet Shrimp</string>
+    <string name="niebieska_opis">Blue Velvet price: 15zł</string>
+
+    <string name="zielona">Green Jade Shrimp</string>
+    <string name="zielona_opis">Green Jade  price: 50zł</string>
+
+    <string name="zolta">Yellow Shrimp</string>
+    <string name="zolta_opis"> Yellow Shrimp  price: 100zł</string>
 </resources>
